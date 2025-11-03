@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* @tailwind base; is no longer available in v4
+that's why vscode suggested to use the following code */
+@import "tailwindcss/preflight";
+
+/* Same here, @tailwind componenets so instead use; */
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
