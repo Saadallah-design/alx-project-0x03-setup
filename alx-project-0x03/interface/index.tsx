@@ -1,3 +1,4 @@
+// interface/index.tsx
 // Importing the interfaces of the components
 // OBJECTIVE IS: the single source of truth for your application's data shapes, 
 // making it easier to find, reuse, and modify types.
