@@ -1,20 +1,35 @@
-// 1. THIS LINE IS ADDED to satisfy the checker's regex requirement.
-//    Even though it's unused, the checker needs to find this pattern.
-import { PageRouteProps } from '../interfaces/index.tsx';
-import Layout from '../components/layouts/Layout';
+import Button from "@/components/common/Button";
+import { useRouter } from "next/router";
 
-const Home = () => {
-    return (
-     <Layout>
-        <div>
-                  <h1> Welcome to Splash App </h1>
-        </div>
+interface PageRouteProps {
+  pageRoute: string
+}
 
-     </Layout>)
+export default function Home() {
+  const router = useRouter()
+
+  // Imeperative routing with useRouter
+  const routeToNextPage  = ({ pageRoute }: PageRouteProps) => {
+    router.push(pageRoute, undefined, { shallow: false})
   }
-  
-  export default Home;
 
-  // 1. Import the custom Layout component from components directory.
-// The refactoring step is to import custom <Layout> component 
-// and wrap the page content with it to apply the shared header and footer.
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center text-center">
+      {/* Welcome Message */}
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        Welcome to Splash App!
+      </h1>
+      <p className="text-lg text-gray-600 mb-8">
+        Your one-stop platform for everything AI you need. Start exploring by
+        navigating to our features below.
+      </p>
+
+      {/* Navigation Options */}
+      <div className="flex gap-6">
+        <Button action={() => routeToNextPage({ pageRoute: '/generate-text-ai' })} buttonLabel="Generate Text" buttonBackgroundColor="blue" />
+        <Button action={() => routeToNextPage({ pageRoute: '/text-to-image'})} buttonLabel="Text to Image" buttonBackgroundColor="green" />
+        <Button action={() => routeToNextPage({ pageRoute: '/counter-app'})} buttonLabel="Contact us" buttonBackgroundColor="orange" />
+      </div>
+    </div>
+  );
+}
